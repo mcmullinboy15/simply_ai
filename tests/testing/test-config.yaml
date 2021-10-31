@@ -1,0 +1,41 @@
+data_file: tests\testing\test-data.csv
+boxes:
+  - type: PytorchNNBuilderBox
+    epochs: 2000
+    batch_size: 32
+    input_cols: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+    output_cols: 0
+    lr: 0.0001
+    model:
+      input_layer: [Linear, 64, relu]
+      hidden_layers:
+        # [ layer, in, out, activation_func ]
+        - [ Linear, 64,  128, relu ]
+        - [ Linear, 128, 256, relu ]
+        - [ Linear, 256, 256, relu ]
+        - [ Linear, 256, 128, relu ]
+        - [ Linear, 128, 64,  relu ]
+        - [ Linear, 64,  32,  relu ]
+      output_layer: [Linear, 32, relu]
+
+  - type: PytorchNNBuilderBox
+    epochs: 2000
+    batch_size: 32
+    input_cols: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+    output_cols: 0
+    lr: 0.0001
+    optim: Adam
+    criterion: MSLoss
+    shuffle: true
+    normalize: true
+    model:
+      input_layer: [Linear, 64, relu]
+      hidden_layers:
+        # [ layer, in, out, activation_func ]
+        - [ Linear, 64,  128, relu ]
+        - [ Linear, 128, 256, relu ]
+        - [ Linear, 256, 256, relu ]
+        - [ Linear, 256, 128, relu ]
+        - [ Linear, 128, 64,  relu ]
+        - [ Linear, 64,  32,  relu ]
+      output_layer: [Linear, 32, relu]

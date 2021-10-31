@@ -1,0 +1,42 @@
+box:
+  batch_size: 32
+  epochs: 2000
+  input_cols: 0
+  model:
+    hidden_layers:
+    - !!python/tuple
+      - Linear
+      - 64
+      - 128
+    - !!python/tuple
+      - Linear
+      - 128
+      - 256
+    - !!python/tuple
+      - Linear
+      - 256
+      - 256
+    - !!python/tuple
+      - Linear
+      - 256
+      - 128
+    - !!python/tuple
+      - Linear
+      - 128
+      - 64
+    - !!python/tuple
+      - Linear
+      - 64
+      - 32
+    input_layer:
+      out: 64
+      type: Linear
+    output_layer:
+      in: 32
+      type: Linear
+  output_cols:
+  - 1
+  - 2
+  - 3
+  type: PytorchNNBuilderBox
+data_file: test-data.csv
